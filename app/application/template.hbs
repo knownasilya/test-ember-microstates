@@ -1,0 +1,19 @@
+Original:<br>
+
+Name: {{this.model.name}}<br>
+isAdmin: {{this.model.isAdmin}}<br><br>
+
+<hr>
+
+{{#let (state (type "user") this.model) as |user|}}
+  <form {{action "onsubmit" user on="submit"}}>
+    Name: {{user.name.state}}<br>
+    isAdmin: {{user.isAdmin.state}}<br><br>
+
+    <input type="text" onchange={{action user.name.set value="target.value"}} placeholder="name">
+    <button type="button" {{action user.isAdmin.toggle}}>Change role</button>
+    <button type="submit">Submit</button>
+  </form>
+{{/let}}
+
+{{outlet}}
