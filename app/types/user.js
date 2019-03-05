@@ -16,15 +16,17 @@ export function Field(validationArr) {
       let value = this.state;
       let results = validationArr.map((check) => {
         let [type, options] = check;
-	let opts = { ...options };
-	
-	if (!opts.description) {
-	  opts.description = this.constructor.path[0]
-	}
-        let result = validate(type, value, options, {}, this.constructor.path[0]);
-	if (result && result.type) {
-	  result.message = messages.getMessageFor(result.type, opts);
-	}
+        let opts = { ...options };
+        let fieldName = this.constructor.path[0];;
+
+        if (!opts.description) {
+          opts.description = fieldName;
+        }
+        
+        let result = validate(type, value, options, {}, fieldName);
+        if (result && result.type) {
+          result.message = messages.getMessageFor(result.type, opts);
+        }
         return result;
       });
 
