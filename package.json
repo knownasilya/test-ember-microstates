@@ -21,7 +21,7 @@
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.6.3",
-    "@microstates/ember": "^0.12.2",
+    "@microstates/ember": "^0.12.3",
     "babel-eslint": "^10.0.1",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.1.0",
