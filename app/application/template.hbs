@@ -7,13 +7,16 @@ isAdmin: {{this.model.isAdmin}}<br><br>
 
 {{#let (state (type "user") this.model) as |user|}}
   <p>
-    <label> Has Errors: </label> {{user.name.hasErrors}}
+    <label> Has Errors: </label> {{user.name.hasErrors}}<br>
+    {{#each user.name.validation as |val|}}
+      {{val.message}}
+    {{/each}}
   </p>
   <form {{action "onsubmit" user on="submit"}}>
     Name: {{user.name.state}}<br>
     isAdmin: {{user.isAdmin.state}}<br><br>
 
-    <input type="text" onchange={{action user.name.set value="target.value"}} placeholder="{{user.name.state}}">
+    <input type="text" onchange={{action user.name.set value="target.value"}} value={{user.name.state}}>
     <button type="button" {{action user.isAdmin.toggle}}>Change role</button>
     <button type="submit">Submit</button>
 
